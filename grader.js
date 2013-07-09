@@ -66,6 +66,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url>','Url',null,null)
         .parse(process.argv);
     if(program.file){
 	var checkJson = checkHtmlFile(program.file, program.checks);
@@ -73,7 +74,8 @@ if(require.main == module) {
 	console.log(outJson);
     }
     if (program.url){
-	rest.get(program.url).on('complete', function(urlcontent){
+	console.log('aqui');
+	    rest.get(program.url).on('complete', function(urlcontent){
 	    var checkjson=checkString(urlcontent, program.checks);
 	    var out=JSON.strigify(checkjson, null, 4);
 	    console.log(out);
