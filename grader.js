@@ -26,7 +26,7 @@ var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
-var restler=require('restler');
+var rest=require('restler');
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -73,7 +73,7 @@ if(require.main == module) {
 	console.log(outJson);
     }
     if (program.url){
-	restler.get(program.url).on('complete', function(urlcontent){
+	rest.get(program.url).on('complete', function(urlcontent){
 	    var checkjson=checkString(urlcontent, program.checks);
 	    var out=JSON.strigify(checkjson, null, 4);
 	    console.log(out);
