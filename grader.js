@@ -92,7 +92,7 @@ if(require.main == module) {
     else if (program.url){
 	    rest.get(program.url).on('complete', function(urlcontent){
 	    var checkjson=checkString(urlcontent, program.checks);
-	    var out=JSON.strigify(checkjson, null, 4);
+	    var out=JSON.stringify(checkjson, null, 4);
 	    console.log(out);
 	});    
    }	
